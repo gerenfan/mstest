@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>普通用户</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+<div id="insert">普通用户</div>
+</body>
+<script>
+    $(function(){
+
+        var token = localStorage.getItem('token');
+        var id = localStorage.getItem('id');
+        $.ajax({
+            url:"http://localhost:8000/general",
+            type:'post',
+            data:{token:token,id:id},
+            dataType:'json',
+            success: function (e) {
+                console.log(e);
+                if(e.code!=0){
+                    alert(e.msg);
+                    location.href="login.html";
+                }
+            },
+            error:function(e){
+                console.log(e)
+            }
+        })
+    });
+
+</script>
+</html>

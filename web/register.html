@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div>
+    <div>
+        用户名: <input name="username" id="username" required placeholder="请输入用户名"/>
+        密码: <input name="password" id="password" type="password"  required placeholder="请输入密码"/>
+        再次输入密码: <input name="re_password" id="re_password" type="password"  required placeholder="请输入密码"/>
+        验证码:<input name="captcha" id="captcha" placeholder="验证码">   <img src="http://localhost:8000/verify" alt="captcha" onclick="this.src=this.src+'&k='+Math.random();" />
+        <button id="submit">注册</button>
+    </div>
+</div>
+</body>
+<script>
+    $("#submit").click(function(){
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var re_password = $("#re_password").val();
+        var captcha = $("#captcha").val();
+        $.ajax({
+            url:"http://localhost:8000/register",
+            type:'post',
+            data:{username:username,password:password,re_password:re_password,captcha:captcha},
+            dataType:'json',
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function (e) {
+                console.log(e)
+                if(e.code==0){
+                    alert(e.msg);
+                    location.href="login.html";
+                }else{
+                    alert(e.msg);
+                }
+            },
+            error:function(e){
+                console.log(e)
+            }
+        })
+    });
+</script>
+</html>
