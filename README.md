@@ -13,10 +13,10 @@
 >>帐号：ceshi 等级：普通用户 密码：123456<br>  
 
 #验证页面<br>
->>根目录下web页面
->>login.html 登录页面
->> register.html 注册页面
->> validate.html  验证jwt
+>>根目录下web页面<br>  
+>>login.html 登录页面<br>  
+>> register.html 注册页面<br>  
+>> validate.html  验证jwt<br>  
 
 #from<br>  
 >>lizhanguang<br>   qq:3072477272
